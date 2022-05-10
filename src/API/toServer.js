@@ -16,21 +16,22 @@ export const addNewSpot = (newEntry) => {
 
 export const findSpots = (foodChoice, priceChoice, distanceChoice, setFoundSpots) => {
     console.log('Query to find spots to server ...');
-    axios.get(SERVER_ADDR + 'find', 'no-cors', { params: { "food": foodChoice, "price": priceChoice, "distance": distanceChoice } })
-        .then(res => {
-            const spotsList = res.data;
-            if (spotsList.length === 0) {
-                alert("No spots found with queried params");
-            }
-            else {
-                console.log(spotsList);
-                setFoundSpots(spotsList);
-            }
-        })
-        .catch(err => {
-            console.log("... server request failed !");
-            console.log(err);
-        });
+    alert("Query not implemented yet ...")
+    // axios.get(SERVER_ADDR + 'find', 'no-cors', { params: { "food": foodChoice, "price": priceChoice, "distance": distanceChoice } })
+    //     .then(res => {
+    //         const spotsList = res.data;
+    //         if (spotsList.length === 0) {
+    //             alert("No spots found with queried params");
+    //         }
+    //         else {
+    //             console.log(spotsList);
+    //             setFoundSpots(spotsList);
+    //         }
+    //     })
+    //     .catch(err => {
+    //         console.log("... server request failed !");
+    //         console.log(err);
+    //     });
 };
 
 export const fetchSpotInfos = (spotId, setSpot) => {
@@ -49,14 +50,15 @@ export const fetchSpotInfos = (spotId, setSpot) => {
 
 export const editSpotInfos = (spotId, newEntry) => {
     console.log('Query to edit restaurant infos to server ...');
-    axios.get(SERVER_ADDR + 'edit', 'no-cors', { params: { "id": spotId, "spot": newEntry } })
-        .then(res => {
-            console.log("Editted restaurant: " + res.data);
-        })
-        .catch(err => {
-            console.log("... server request failed !");
-            console.log(err);
-        });
+    alert("Query not implemented yet ...")
+    // axios.get(SERVER_ADDR + 'edit', 'no-cors', { params: { "id": spotId, "spot": newEntry } })
+    //     .then(res => {
+    //         console.log("Editted restaurant: " + res.data);
+    //     })
+    //     .catch(err => {
+    //         console.log("... server request failed !");
+    //         console.log(err);
+    //     });
 };
 
 export const requestRestaurantsList = (setRestaurantsList) => {
