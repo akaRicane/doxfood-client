@@ -24,7 +24,7 @@ const Tile = ({ spot }) => {
                 <h3>{spotInfos.rate}</h3>
             </div>
             <div className='tile-text'>
-                <Link to='/edit/spotId' state={{id: spotId, name: spotInfos.name}}>edit</Link>
+                <Link to='/doxfood-client/edit/spotId' state={{id: spotId, name: spotInfos.name}}>edit</Link>
             </div>
         </div>
     );
