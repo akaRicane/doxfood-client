@@ -1,0 +1,107 @@
+$white: #fff;
+$black: #333;
+
+$color-home: #597DFF;
+$color-widget: #DBAD6A;
+$color-bgn: #435EBF;
+
+$dox-margin-pad: 0rem;
+
+html,
+body {
+    background-color: $black;
+    margin: $dox-margin-pad $dox-margin-pad $dox-margin-pad $dox-margin-pad;
+}
+
+a {
+    text-decoration: none;
+    color: $white;
+    cursor: pointer;
+}
+
+a:visited {
+    color: $white;
+}
+
+@mixin widget {
+    background-color: $color-widget;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    .col {
+        @include centered;
+        min-width: 45vw;
+    }
+}
+
+@mixin pages {
+    background-color: $color-home;
+    display: grid;
+    grid-template-rows: 1fr 5fr 1fr;
+    justify-content: center;
+
+    .text {
+        @include centered;
+    }
+    
+    .module {
+        @include widget;
+    }
+}
+
+@mixin centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app {
+    display: grid;
+    grid-template-rows: 50px 1fr 50px;
+    width: 100vw;
+    min-height: 100vh;
+    color: $white;
+    background-color: $color-bgn;
+    
+    .home, .new, .list, .edit {
+        @include pages;
+    }
+
+    .tile {
+        background-color: $color-widget;
+        display: grid;
+        grid-template-columns: 3fr 1fr 1fr;
+        height: 10vh;
+        max-height: 40px;
+        min-width: 70vw;
+        margin-top: 1rem;
+        align-content: space-around;
+        border-radius: 20px;
+        
+        .tile-text {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}
+
+.header {
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+
+    .text {
+        @include centered;
+    }
+}
+
+.footer {
+    .text {
+        @include centered;
+    }
+}
+
+.leaflet-container {
+    width: 100%;
+    height: 100%;
+  }

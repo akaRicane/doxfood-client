@@ -1,0 +1,134 @@
+html,
+body {
+  background-color: #333;
+  margin: 0rem 0rem 0rem 0rem;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+a:visited {
+  color: #fff;
+}
+
+.app {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 50px 1fr 50px;
+      grid-template-rows: 50px 1fr 50px;
+  width: 100vw;
+  min-height: 100vh;
+  color: #fff;
+  background-color: #435EBF;
+}
+
+.app .home, .app .new, .app .list, .app .edit {
+  background-color: #597DFF;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 1fr 5fr 1fr;
+      grid-template-rows: 1fr 5fr 1fr;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.app .home .text, .app .new .text, .app .list .text, .app .edit .text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.app .home .module, .app .new .module, .app .list .module, .app .edit .module {
+  background-color: #DBAD6A;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+}
+
+.app .home .module .col, .app .new .module .col, .app .list .module .col, .app .edit .module .col {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-width: 45vw;
+}
+
+.app .tile {
+  background-color: #DBAD6A;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 3fr 1fr 1fr;
+      grid-template-columns: 3fr 1fr 1fr;
+  height: 10vh;
+  max-height: 40px;
+  min-width: 70vw;
+  margin-top: 1rem;
+  -ms-flex-line-pack: distribute;
+      align-content: space-around;
+  border-radius: 20px;
+}
+
+.app .tile .tile-text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.header {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 5fr 1fr;
+      grid-template-columns: 5fr 1fr;
+}
+
+.header .text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.footer .text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+}
+/*# sourceMappingURL=styles.css.map */
