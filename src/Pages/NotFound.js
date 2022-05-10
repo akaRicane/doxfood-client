@@ -7,7 +7,7 @@ const NotFound = () => {
             <h1>
                 Not found
             </h1>
-            <NavLink to='/'>
+            <NavLink to='/doxfood-client/'>
                 <span>Back to home page !</span>
             </NavLink>
         </div>

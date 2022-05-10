@@ -20,10 +20,10 @@ const App = () => {
             <AppContext.Provider value={{ restaurantsList, setRestaurantsList }}>
                 <Header />
                 <Routes>
-                    <Route path='/' element={<FindRestaurants />} />
-                    <Route path='/new' element={<NewRestaurant />} />
-                    <Route path='/edit/:spotId' element={<EditRestaurants />} />
-                    <Route path='/list' element={<ListRestaurants />} />
+                    <Route path='/doxfood-client/' element={<FindRestaurants />} />
+                    <Route path='/doxfood-client/new' element={<NewRestaurant />} />
+                    <Route path='/doxfood-client/edit/:spotId' element={<EditRestaurants />} />
+                    <Route path='/doxfood-client/list' element={<ListRestaurants />} />
                     <Route path='*' element={<NotFound />} />
                 </Routes>
                 <Footer />

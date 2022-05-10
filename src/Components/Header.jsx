@@ -8,14 +8,14 @@ const Header = () => {
                 <h3>DOXFOOD</h3>
             </div>
             <div className='text'>
-                <NavLink to='/'>
+                <NavLink to='/doxfood-client/'>
                     <span>🏠 </span>
                 </NavLink>
-                <NavLink to='/list'>
+                <NavLink to='/doxfood-client/list'>
                     <span>📚</span>
                 </NavLink>
-                <NavLink to='/new'>
-                    <span>🧑‍🍳</span>
+                <NavLink to='/doxfood-client/new'>
+                    <span>🆕</span>
                 </NavLink>
             </div>
         </div>
