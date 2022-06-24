@@ -4,14 +4,10 @@ import { Link } from 'react-router-dom';
 const Tile = ({ spot }) => {
 
     const [spotInfos, setSpotInfos] = React.useState({});
-    const [spotId, setSpotId] = React.useState({});
 
     React.useEffect(() => {
         if (spot !== undefined) {
-            setSpotId(spot._id)
-            const infos = spot
-            console.log(infos)
-            setSpotInfos(infos)
+            setSpotInfos(spot)
         }
     }, [spot]);
 
@@ -24,7 +20,7 @@ const Tile = ({ spot }) => {
                 <h3>{spotInfos.rate}</h3>
             </div>
             <div className='tile-text'>
-                <Link to='/doxfood-client/edit/spotId' state={{id: spotId, name: spotInfos.name}}>edit</Link>
+                <Link to={'/doxfood-client/edit/'} state={{infos: spotInfos}}>edit</Link>
             </div>
         </div>
     );

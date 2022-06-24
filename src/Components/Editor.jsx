@@ -72,20 +72,21 @@ const Editor = ({ spot, handleSubmitEdittedSpot }) => {
 
     React.useEffect(() => {
         if (spot.name !== undefined) {
+            console.log(spot)
             setName(spot.name);
             setIsVege(Boolean(spot.isVege));
             setFood(spot.food);
             setPrice(spot.price);
             setDistance(spot.distance);
             setRate(spot.rate);
-            updateAddressCallback("streetNum", spot.address.streetNum);
-            updateAddressCallback("street", spot.address.street);
-            updateAddressCallback("city", spot.address.city);
-            updateCoordinatesCallback("lon", spot.coordinates.lon);
-            updateCoordinatesCallback("lat", spot.coordinates.lat);
+            updateAddressCallback("streetNum", spot.streetNum);
+            updateAddressCallback("street", spot.street);
+            updateAddressCallback("city", spot.city);
+            updateCoordinatesCallback("lon", spot.longitude);
+            updateCoordinatesCallback("lat", spot.latitude);
             updatePinMapCallback("label", spot.name);
-            updatePinMapCallback("lon", spot.coordinates.lon);
-            updatePinMapCallback("lat", spot.coordinates.lat);
+            updatePinMapCallback("lon", spot.longitude);
+            updatePinMapCallback("lat", spot.latitude);
         }
         // eslint-disable-next-line
     }, [spot, updateAddressCallback, updateCoordinatesCallback, updatePinMapCallback])
@@ -213,7 +214,7 @@ const Editor = ({ spot, handleSubmitEdittedSpot }) => {
                     </tbody>
                 </table>
             </div>
-            <Map pinList={pinMap}/>
+            {/* <Map pinList={pinMap}/> */}
         </div>
     );
 };

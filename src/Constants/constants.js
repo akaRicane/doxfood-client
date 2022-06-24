@@ -21,10 +21,14 @@ export const OPTIONS_RATE = [
 
 export const OPTIONS_PRICE = [
     { "label": " ", "value": "false" },
-    { "label": "Cheap", "value": "cheap" }
+    { "label": "< 7€", "value": "7" },
+    { "label": "< 15€", "value": "15" },
+    { "label": "< 25€", "value": "25" }
 ];
 
 export const OPTIONS_DISTANCE = [
     { "label": " ", "value": "false" },
-    { "label": "Close", "value": "close" }
+    { "label": "< 3 min", "value": "3" },
+    { "label": "< 10 min", "value": "10" },
+    { "label": "< 20 min", "value": "20" }
 ];

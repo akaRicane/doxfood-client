@@ -97,7 +97,7 @@ const Finder = () => {
                     </tbody>
                 </table>
             </div>
-            <Map pinList={pinList}/>
+            {/* <Map pinList={pinList}/> */}
         </div>
     );
 };
