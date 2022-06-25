@@ -79,14 +79,14 @@ const Editor = ({ spot, handleSubmitEdittedSpot }) => {
             setPrice(spot.price);
             setDistance(spot.distance);
             setRate(spot.rate);
-            updateAddressCallback("streetNum", spot.streetNum);
-            updateAddressCallback("street", spot.street);
-            updateAddressCallback("city", spot.city);
-            updateCoordinatesCallback("lon", spot.longitude);
-            updateCoordinatesCallback("lat", spot.latitude);
+            updateAddressCallback("streetNum", spot.address.streetNum);
+            updateAddressCallback("street", spot.address.street);
+            updateAddressCallback("city", spot.address.city);
+            updateCoordinatesCallback("lon", spot.coordinates.lon);
+            updateCoordinatesCallback("lat", spot.coordinates.lat);
             updatePinMapCallback("label", spot.name);
-            updatePinMapCallback("lon", spot.longitude);
-            updatePinMapCallback("lat", spot.latitude);
+            updatePinMapCallback("lon", spot.coordinates.lon);
+            updatePinMapCallback("lat", spot.coordinates.lat);
         }
         // eslint-disable-next-line
     }, [spot, updateAddressCallback, updateCoordinatesCallback, updatePinMapCallback])
@@ -214,7 +214,7 @@ const Editor = ({ spot, handleSubmitEdittedSpot }) => {
                     </tbody>
                 </table>
             </div>
-            {/* <Map pinList={pinMap}/> */}
+            <Map pinList={pinMap}/>
         </div>
     );
 };

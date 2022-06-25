@@ -15,6 +15,7 @@ const Map = ({ pinList }) => {
             else {
                 setPins([pinList]);
             }
+            console.log(pins)
         }
         else {
             console.log("Can't display on map")
@@ -39,7 +40,7 @@ const Map = ({ pinList }) => {
                             return (
                                 <Marker key={'marker-' + idx} position={[pin.coordinates.lon, pin.coordinates.lat]}>
                                     <Popup>
-                                        {pin.label}
+                                        <h3>{pin.label}</h3><br/><a>{pin.website}</a>
                                     </Popup>
                                 </Marker>
                             )

@@ -144,7 +144,7 @@ const Create = ({ handleSubmitNewSpot }) => {
                     </tbody>
                 </table>
             </div>
-            {/* <Map /> */}
+            <Map />
         </div>
     );
 };

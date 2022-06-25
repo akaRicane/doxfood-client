@@ -20,32 +20,41 @@ export const addNewSpot = (newEntry) => {
 /* ---------------------------------- LIST ---------------------------------- */
 export const requestRestaurantsList = (setRestaurantsList) => {
     console.log('Request restaurants list to server ...');
-    
-    axios.get(SERVER_ADDR + "list", 'no-cors')
-    .then(res => {
-        console.log("Restaurants list is loaded ! (found " + res.data.length + ")");
-        setRestaurantsList(res.data);
-    })
-    .catch(err => {
-        console.log("... server request failed !");
-        console.log(err);
-    });
-};
 
-/* ----------------------------- GET INFOS BY ID ---------------------------- */
-export const fetchSpotInfos = (spotId, setSpot) => {
-    console.log('Query to fetch restaurant infos to server ...');
-    console.log(spotId)
-    axios.get(SERVER_ADDR + 'fetch', { params: { id: spotId } }, 'no-cors')
+    axios.get(SERVER_ADDR + "list", 'no-cors')
         .then(res => {
-            console.log("Fetch restaurant: " + res.data.restaurant);
-            setSpot(res.data.restaurant);
+            console.log("Restaurants list is loaded ! (found " + res.data.length + ")");
+            var formattedRestaurantsList = [];
+            for (const resRestaurant of res.data) {
+                const formattedRestaurant = {
+                    id: resRestaurant.id,
+                    name: resRestaurant.name,
+                    food: resRestaurant.food,
+                    isVege: resRestaurant.isVege,
+                    price: resRestaurant.price,
+                    distance: resRestaurant.distance,
+                    rate: resRestaurant.rate,
+                    website: resRestaurant.website,
+                    deal: resRestaurant.deal,
+                    address: {
+                        streetNum: resRestaurant.streetNum,
+                        street: resRestaurant.street,
+                        city: resRestaurant.city,
+                    },
+                    coordinates: {
+                        lon: resRestaurant.longitude,
+                        lat: resRestaurant.latitude
+                    }
+                }
+                formattedRestaurantsList.push(formattedRestaurant)
+            }
+            console.log(formattedRestaurantsList)
+            setRestaurantsList(formattedRestaurantsList);
         })
         .catch(err => {
             console.log("... server request failed !");
             console.log(err);
         });
-
 };
 
 /* ------------------------------- EDIT BY ID ------------------------------- */
@@ -73,8 +82,32 @@ export const findSpots = (foodChoice, priceChoice, distanceChoice, setFoundSpots
                 alert("No spots found with queried params");
             }
             else {
-                console.log(spotsList);
-                setFoundSpots(spotsList);
+                var formattedRestaurantsList = [];
+                for (const resRestaurant of res.data) {
+                    const formattedRestaurant = {
+                        id: resRestaurant.id,
+                        name: resRestaurant.name,
+                        food: resRestaurant.food,
+                        isVege: resRestaurant.isVege,
+                        price: resRestaurant.price,
+                        distance: resRestaurant.distance,
+                        rate: resRestaurant.rate,
+                        website: resRestaurant.website,
+                        deal: resRestaurant.deal,
+                        address: {
+                            streetNum: resRestaurant.streetNum,
+                            street: resRestaurant.street,
+                            city: resRestaurant.city,
+                        },
+                        coordinates: {
+                            lon: resRestaurant.longitude,
+                            lat: resRestaurant.latitude
+                        }
+                    }
+                    formattedRestaurantsList.push(formattedRestaurant)
+                }
+                console.log(formattedRestaurantsList)
+                setFoundSpots(formattedRestaurantsList);
             }
         })
         .catch(err => {
