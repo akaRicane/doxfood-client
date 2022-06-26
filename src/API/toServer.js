@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// const SERVER_ADDR = "https://rocky-wildwood-62155.herokuapp.com/";
-const SERVER_ADDR = "http://127.0.0.1:5000/";
+const SERVER_ADDR = "https://rocky-wildwood-62155.herokuapp.com/";
+// const SERVER_ADDR = "http://127.0.0.1:5000/";
 
 /* --------------------------------- CREATE --------------------------------- */
 export const addNewSpot = (newEntry) => {
