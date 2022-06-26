@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
 import { editSpotInfos } from '../API/toServer';
@@ -27,7 +28,10 @@ const EditRestaurants = () => {
 
     return (
         <div className='edit'>
-            <h1 className='text'>Edit {spot.name} infos</h1>
+            <div>
+                <h1 className='text'>Edit {spot.name} infos</h1>
+                <NavLink to='/doxfood-client/list'><span>Back to list</span></NavLink>
+            </div>
             <Editor spot={spot} handleSubmitEdittedSpot={handleSubmitEdittedSpot} />
         </div>
     );

@@ -3,6 +3,8 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 
 import { DEFAULT_PINMAP, DXOMARK_COORDINATES } from '../Constants/default';
 
+import { openWebsite } from '../Utils/utils';
+
 const Map = ({ pinList }) => {
 
     const [pins, setPins] = React.useState([DEFAULT_PINMAP])
@@ -15,7 +17,6 @@ const Map = ({ pinList }) => {
             else {
                 setPins([pinList]);
             }
-            console.log(pins)
         }
         else {
             console.log("Can't display on map")
@@ -40,7 +41,7 @@ const Map = ({ pinList }) => {
                             return (
                                 <Marker key={'marker-' + idx} position={[pin.coordinates.lon, pin.coordinates.lat]}>
                                     <Popup>
-                                        <h3>{pin.label}</h3><br/><a>{pin.website}</a>
+                                        <button onClick={() => openWebsite(pin.website)}>{pin.label}</button>
                                     </Popup>
                                 </Marker>
                             )

@@ -14,7 +14,7 @@ const Tile = ({ spot }) => {
     return (
         <div className='tile'>
             <div className='tile-text'>
-                <h3>{spotInfos.name} ({spotInfos.food})</h3>
+                <h3>{spotInfos.name} ({spotInfos.food}  /  {spotInfos.vegetarian})</h3>
             </div>
             <div className='tile-text'>
                 <h3>{spotInfos.rate}</h3>

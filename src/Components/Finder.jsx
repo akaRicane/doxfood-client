@@ -1,12 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Dropdown from './Dropdown';
 import Map from '../API/Map';
 
 import { findSpots } from '../API/toServer';
 
-import { OPTIONS_FOOD, OPTIONS_PRICE, OPTIONS_DISTANCE } from '../Constants/constants';
-import { DEFAULT_FOOD_CHOICE, DEFAULT_PRICE_CHOICE, DEFAULT_DISTANCE_CHOICE, DEFAULT_PINMAP } from '../Constants/default';
+import { OPTIONS_FOOD, OPTIONS_PRICE, OPTIONS_DISTANCE, OPTIONS_VEGETARIAN_FINDER } from '../Constants/constants';
+import { DEFAULT_FOOD_CHOICE, DEFAULT_PRICE_CHOICE, DEFAULT_DISTANCE_CHOICE, DEFAULT_VEGETARIAN_CHOICE_FINDER, DEFAULT_PINMAP } from '../Constants/default';
 
 const Finder = () => {
 
@@ -14,6 +15,7 @@ const Finder = () => {
     const [foodChoice, setFoodChoice] = React.useState(DEFAULT_FOOD_CHOICE);
     const [priceChoice, setPriceChoice] = React.useState(DEFAULT_PRICE_CHOICE);
     const [distanceChoice, setDistanceChoice] = React.useState(DEFAULT_DISTANCE_CHOICE);
+    const [vegetarianChoice, setVegetarianChoice] = React.useState(DEFAULT_VEGETARIAN_CHOICE_FINDER);
     const [pinList, setPinList] = React.useState(DEFAULT_PINMAP);
 
     React.useEffect(() => {
@@ -22,21 +24,23 @@ const Finder = () => {
             foundSpots.forEach(spot => {
                 var pin = {
                     label: spot.name,
-                    coordinates: spot.coordinates
+                    coordinates: spot.coordinates,
+                    website: spot.website
                 }
                 pinBuffer.push(pin);
             })
             setPinList(pinBuffer);
         }
-        // else {
-        //     setPinList(DEFAULT_PINMAP);
-        // }
+        else {
+            setPinList(DEFAULT_PINMAP);
+        }
     }, [foundSpots])
 
     const handleFoodDP = (event) => { setFoodChoice(event.target.value); };
     const handlePriceDP = (event) => { setPriceChoice(event.target.value); };
     const handleDistanceDP = (event) => { setDistanceChoice(event.target.value); };
-    const handleFindBtn = () => { findSpots(foodChoice, priceChoice, distanceChoice, setFoundSpots); };
+    const handleVegetarianDP = (event) => { setVegetarianChoice(event.target.value); };
+    const handleFindBtn = () => { findSpots(foodChoice, priceChoice, distanceChoice, vegetarianChoice, setFoundSpots); };
 
     return (
         <div className='module'>
@@ -85,19 +89,32 @@ const Finder = () => {
                             </td>
                         </tr>
                         <tr>
+                            <td>Vegetarian</td>
+                            <td>
+                                <Dropdown
+                                    label=""
+                                    options={OPTIONS_VEGETARIAN_FINDER}
+                                    value={vegetarianChoice}
+                                    onChange={handleVegetarianDP}
+                                />
+                            </td>
+                        </tr>
+                        <tr>
                             <td><h3 className='text'>Results</h3></td>
                         </tr>
-                            {
-                                foundSpots.map((spot, idx) => {
-                                    return (
-                                        <tr key={'finder-results-' + idx}><td key={'finder-results-cell' + idx}>{spot.name}</td></tr>
-                                    )
-                                })
-                            }
+                        {
+                            foundSpots.map((spot, idx) => {
+                                return (
+                                    <tr key={"tr-" + idx}><td key={"td-" + idx}>
+                                        <Link to={'/doxfood-client/edit/'} state={{ infos: spot }}>{spot.name}  ({spot.food})</Link>
+                                    </td></tr>
+                                )
+                            })
+                        }
                     </tbody>
                 </table>
             </div>
-            <Map pinList={pinList}/>
+            <Map pinList={pinList} />
         </div>
     );
 };

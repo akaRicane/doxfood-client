@@ -2,9 +2,9 @@ import React from 'react';
 
 import Dropdown from './Dropdown';
 import Map from '../API/Map';
-import { updateAddress, updateCoordinates, openGMaps } from '../Utils/utils';
+import { updateAddress, updateCoordinates, openGMaps, openWebsite } from '../Utils/utils';
 
-import { OPTIONS_FOOD, OPTIONS_RATE } from '../Constants/constants';
+import { OPTIONS_FOOD, OPTIONS_RATE, OPTIONS_VEGETARIAN } from '../Constants/constants';
 import {
     DEFAULT_NAME, DEFAULT_DISTANCE, DEFAULT_FOOD, DEFAULT_COORDINATES,
     DEFAULT_ISVEGE, DEFAULT_ADDRESS, DEFAULT_PRICE, DEFAULT_RATE
@@ -15,44 +15,49 @@ const Create = ({ handleSubmitNewSpot }) => {
     const [nameInput, setNameInput] = React.useState(DEFAULT_NAME);
     const [distance, setDistance] = React.useState(DEFAULT_DISTANCE);
     const [food, setFood] = React.useState(DEFAULT_FOOD);
-    const [isVege, setIsVege] = React.useState(DEFAULT_ISVEGE);
+    const [vegetarian, setVegetarian] = React.useState(DEFAULT_ISVEGE);
     const [price, setPrice] = React.useState(DEFAULT_PRICE);
     const [rate, setRate] = React.useState(DEFAULT_RATE);
+    const [website, setWebsite] = React.useState("");
+    const [deal, setDeal] = React.useState("add deal in edit");
     const [address, setAddress] = React.useState(DEFAULT_ADDRESS);
     const [coordinates, setCoordinates] = React.useState(DEFAULT_COORDINATES);
 
     const handleNameInput = (event) => { setNameInput(event.target.value); }
-    const handleIsVegeInput = () => {
-        if (isVege === "true") {
-            setIsVege("false");
-            console.log("Vege -> false");
-        }
-        else {
-            setIsVege("true");
-            console.log("Vege ->  true");
-        }
-    };
+    const handleVegetarianDP = (event) => { setVegetarian(event.target.value) };
     const handleFoodDP = (event) => { setFood(event.target.value); };
     const handlePriceInput = (event) => { setPrice(event.target.value); }
     const handleDistanceInput = (event) => { setDistance(event.target.value); }
     const handleRateDP = (event) => { setRate(event.target.value); };
+    const handleWebsiteInput = (event) => { setWebsite(event.target.value); }
+    const handleOpenWebsiteBtn = () => { openWebsite(website); }
+    const handleDealInput = (event) => { setDeal(event.target.value); }
 
     const handleStreetNum = (event) => { updateAddress("streetNum", event.target.value, address, setAddress); };
     const handleStreet = (event) => { updateAddress("street", event.target.value, address, setAddress); };
     const handleCity = (event) => { updateAddress("city", event.target.value, address, setAddress); };
-
-    const handleLongitude = (event) => { updateCoordinates("lon", event.target.value, coordinates, setCoordinates); };
-    const handleLatitude = (event) => { updateCoordinates("lat", event.target.value, coordinates, setCoordinates); };
     const handleCheckGMapsBtn = () => { openGMaps(address); };
+
+    const handleCoordinatesInput = (event) => {
+        const lonLat = event.target.value;
+        console.log(lonLat);
+        const longitude = lonLat.split(",").at(0);
+        const latitude = lonLat.split(",").at(1);
+        console.log(longitude, latitude)
+        updateCoordinates("lon", longitude, coordinates, setCoordinates);
+        updateCoordinates("lat", latitude, coordinates, setCoordinates);
+    }
 
     const submitButton = () => {
         const newEntry = {
             name: nameInput,
             food: food,
-            isVege: isVege,
+            vegetarian: vegetarian,
             price: price,
             distance: distance,
             rate: rate,
+            website: website,
+            deal: deal,
             address: address,
             coordinates: coordinates
         }
@@ -81,7 +86,14 @@ const Create = ({ handleSubmitNewSpot }) => {
                         </tr>
                         <tr>
                             <td>Vege</td>
-                            <td><input type='checkbox' onChange={() => handleIsVegeInput()} /></td>
+                            <td>
+                                <Dropdown
+                                    label=" "
+                                    options={OPTIONS_VEGETARIAN}
+                                    value={vegetarian}
+                                    onChange={handleVegetarianDP}
+                                />
+                            </td>
                         </tr>
                         <tr>
                             <td>Price</td>
@@ -104,12 +116,17 @@ const Create = ({ handleSubmitNewSpot }) => {
                                 />
                             </td>
                         </tr>
+                        <tr><td><h1> </h1></td></tr>
                         <tr>
-                            <td>Tags</td>
+                            <td>Website</td>
+                            <td><input onChange={(event) => handleWebsiteInput(event)} /></td>
+                            <td><button onClick={() => handleOpenWebsiteBtn()}>Open</button></td>
                         </tr>
                         <tr>
-                            <td>Favorites</td>
+                            <td>Best deals</td>
+                            <td><input onChange={(event) => handleDealInput(event)} /></td>
                         </tr>
+                        <tr><td><h1> </h1></td></tr>
                         <tr>
                             <td>#</td>
                             <td><input onChange={(event) => handleStreetNum(event)} /></td>
@@ -120,7 +137,7 @@ const Create = ({ handleSubmitNewSpot }) => {
                         </tr>
                         <tr>
                             <td>City</td>
-                            <td><input onChange={(event) => handleCity(event)} placeholder='Boulogne-Billancourt'/></td>
+                            <td><input onChange={(event) => handleCity(event)} placeholder='Boulogne-Billancourt' /></td>
                         </tr>
                         <tr height='20'></tr>
                         <tr>
@@ -128,12 +145,8 @@ const Create = ({ handleSubmitNewSpot }) => {
                             <td><button onClick={() => handleCheckGMapsBtn()}>Check coordinates</button> </td>
                         </tr>
                         <tr>
-                            <td>Lon</td>
-                            <td><input onChange={(event) => handleLongitude(event)} /></td>
-                        </tr>
-                        <tr>
-                            <td>Lat</td>
-                            <td><input onChange={(event) => handleLatitude(event)} /></td>
+                            <td>Coordinates</td>
+                            <td><input onChange={(event) => handleCoordinatesInput(event)} /></td>
                         </tr>
                         <tr height='50'></tr>
                         <tr>

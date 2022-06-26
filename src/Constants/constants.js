@@ -10,6 +10,17 @@ export const OPTIONS_FOOD = [
     { "label": "Saladbar", "value": "Saladbar" },
 ];
 
+export const OPTIONS_VEGETARIAN = [
+    { "label": "Vege", "value": "Vege" },
+    { "label": "Not Vege", "value": "Not Vege" }
+];
+
+export const OPTIONS_VEGETARIAN_FINDER = [
+    { "label": "Whatever", "value": "Whatever" },
+    { "label": "Vege", "value": "Vege" },
+    { "label": "Not Vege", "value": "Not Vege" }
+];
+
 export const OPTIONS_RATE = [
     { "label": "☆☆☆☆☆", "value": "☆☆☆☆☆" },
     { "label": "★☆☆☆☆", "value": "★☆☆☆☆" },
@@ -28,7 +39,7 @@ export const OPTIONS_PRICE = [
 
 export const OPTIONS_DISTANCE = [
     { "label": " ", "value": "false" },
-    { "label": "< 3 min", "value": "3" },
     { "label": "< 10 min", "value": "10" },
-    { "label": "< 20 min", "value": "20" }
+    { "label": "< 20 min", "value": "20" },
+    { "label": "< 40 min", "value": "40" }
 ];

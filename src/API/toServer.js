@@ -6,10 +6,15 @@ const SERVER_ADDR = "http://127.0.0.1:5000/";
 /* --------------------------------- CREATE --------------------------------- */
 export const addNewSpot = (newEntry) => {
     console.log('Query to add entry to server ...');
-    // console.log(newEntry)
-    axios.get(SERVER_ADDR + 'create', { "params": { "spot": newEntry } }, 'no-cors')
+    const password = prompt("Password", "");
+    axios.get(SERVER_ADDR + 'create', { "params": { "spot": newEntry, "token": password } }, 'no-cors')
         .then(res => {
-            console.log("Added to database: " + res.data);
+            if (res.data === "UNAUTHORIZED") {
+                alert("UNAUTHORIZED to create new restaurant")
+            }
+            else {
+                console.log("Added to database: " + res.data);
+            }
         })
         .catch(err => {
             console.log("... server request failed !");
@@ -20,7 +25,6 @@ export const addNewSpot = (newEntry) => {
 /* ---------------------------------- LIST ---------------------------------- */
 export const requestRestaurantsList = (setRestaurantsList) => {
     console.log('Request restaurants list to server ...');
-
     axios.get(SERVER_ADDR + "list", 'no-cors')
         .then(res => {
             console.log("Restaurants list is loaded ! (found " + res.data.length + ")");
@@ -30,7 +34,7 @@ export const requestRestaurantsList = (setRestaurantsList) => {
                     id: resRestaurant.id,
                     name: resRestaurant.name,
                     food: resRestaurant.food,
-                    isVege: resRestaurant.isVege,
+                    vegetarian: resRestaurant.vegetarian,
                     price: resRestaurant.price,
                     distance: resRestaurant.distance,
                     rate: resRestaurant.rate,
@@ -48,7 +52,6 @@ export const requestRestaurantsList = (setRestaurantsList) => {
                 }
                 formattedRestaurantsList.push(formattedRestaurant)
             }
-            console.log(formattedRestaurantsList)
             setRestaurantsList(formattedRestaurantsList);
         })
         .catch(err => {
@@ -60,10 +63,15 @@ export const requestRestaurantsList = (setRestaurantsList) => {
 /* ------------------------------- EDIT BY ID ------------------------------- */
 export const editSpotInfos = (spotId, newEntry) => {
     console.log('Query to edit restaurant infos to server ...');
-    // alert("Query not implemented yet ...")
-    axios.get(SERVER_ADDR + 'edit', { params: { id: spotId, newSpot: newEntry } }, 'no-cors')
+    const password = prompt("Password", "");
+    axios.get(SERVER_ADDR + 'edit', { params: { id: spotId, newSpot: newEntry, "token": password } }, 'no-cors')
         .then(res => {
-            console.log("Editted restaurant: " + res.data);
+            if (res.data === "UNAUTHORIZED") {
+                alert("UNAUTHORIZED to edit restaurant")
+            }
+            else {
+                console.log("Editted restaurant: " + res.data);
+            }
         })
         .catch(err => {
             console.log("... server request failed !");
@@ -72,11 +80,15 @@ export const editSpotInfos = (spotId, newEntry) => {
 };
 
 /* ------------------------------ FIND MATCHING ----------------------------- */
-export const findSpots = (foodChoice, priceChoice, distanceChoice, setFoundSpots) => {
+export const findSpots = (foodChoice, priceChoice, distanceChoice, vegetarianChoice, setFoundSpots) => {
     console.log('Query to find spots to server ...');
-    axios.get(SERVER_ADDR + 'find', { params: { "food": foodChoice, "price": priceChoice, "distance": distanceChoice } }, 'no-cors')
+    axios.get(SERVER_ADDR + 'find', { params: {
+        "food": foodChoice,
+        "price": priceChoice,
+        "distance": distanceChoice,
+        "vegetarianChoice": vegetarianChoice
+    } }, 'no-cors')
         .then(res => {
-            console.log(res)
             const spotsList = res.data;
             if (spotsList.length === 0) {
                 alert("No spots found with queried params");
@@ -88,7 +100,7 @@ export const findSpots = (foodChoice, priceChoice, distanceChoice, setFoundSpots
                         id: resRestaurant.id,
                         name: resRestaurant.name,
                         food: resRestaurant.food,
-                        isVege: resRestaurant.isVege,
+                        vegetarian: resRestaurant.vegetarian,
                         price: resRestaurant.price,
                         distance: resRestaurant.distance,
                         rate: resRestaurant.rate,
@@ -106,7 +118,6 @@ export const findSpots = (foodChoice, priceChoice, distanceChoice, setFoundSpots
                     }
                     formattedRestaurantsList.push(formattedRestaurant)
                 }
-                console.log(formattedRestaurantsList)
                 setFoundSpots(formattedRestaurantsList);
             }
         })

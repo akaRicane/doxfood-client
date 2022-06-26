@@ -1,11 +1,13 @@
 export const DEFAULT_FOOD_CHOICE = 'false';
 export const DEFAULT_PRICE_CHOICE = 'false';
 export const DEFAULT_DISTANCE_CHOICE = 'false';
+export const DEFAULT_VEGETARIAN_CHOICE = 'Not Vege';
+export const DEFAULT_VEGETARIAN_CHOICE_FINDER = 'Whatever';
 
 export const DEFAULT_NAME = "";
 export const DEFAULT_DISTANCE = '';
 export const DEFAULT_FOOD = "Microwave";
-export const DEFAULT_ISVEGE = "false";
+export const DEFAULT_ISVEGE = "Not Vege";
 export const DEFAULT_PRICE = '';
 export const DEFAULT_RATE = '☆☆☆☆☆';
 export const DEFAULT_ADDRESS = {
