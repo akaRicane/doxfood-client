@@ -2,10 +2,12 @@ export const buildAlertMsg = (newEntry, msg) => {
     var alertStr = "You're about to " + msg + " the entry!";
     alertStr += "\nname : " + newEntry.name;
     alertStr += "\nfood : " + newEntry.food;
-    alertStr += "\nvege : " + newEntry.vege;
+    alertStr += "\nvege : " + newEntry.vegetarian;
     alertStr += "\nprice : " + newEntry.price;
     alertStr += "\ndistance : " + newEntry.distance;
     alertStr += "\nrate : " + newEntry.rate;
+    alertStr += "\nwebsite : " + newEntry.website;
+    alertStr += "\nBest deals : " + newEntry.deal;
     alertStr += "\naddress : " + newEntry.address.streetNum;
     alertStr += " " + newEntry.address.street;
     alertStr += ", " + newEntry.address.city;
@@ -34,18 +36,17 @@ export const updateAddress = (item, value, address, setAddress) => {
 
 export const updateCoordinates = (item, value, coordinates, setCoordinates) => {
     var currentCoords = coordinates;
-        switch (item) {
-            case "lon":
-                currentCoords.lon = value;
-                break;
-            case "lat":
-                currentCoords.lat = value;
-                break;
-            default:
-                break;
-        }
-        console.log(currentCoords)
-        setCoordinates(currentCoords);
+    switch (item) {
+        case "lon":
+            currentCoords.lon = value;
+            break;
+        case "lat":
+            currentCoords.lat = value;
+            break;
+        default:
+            break;
+    }
+    setCoordinates(currentCoords);
 }
 
 export const openGMaps = (address) => {
@@ -54,11 +55,13 @@ export const openGMaps = (address) => {
     var urlReq = 'https://www.google.com/maps/search/?api=1&query=';
     urlReq += address.streetNum + coma;
     var splitStreet = address.street.split(" ");
-    splitStreet.forEach(elem => {urlReq += elem + space;})
+    splitStreet.forEach(elem => { urlReq += elem + space; })
     urlReq += coma;
     var splitCity = address.city.split(" ");
-    splitCity.forEach(elem => {urlReq += elem + space;})
-
-    console.log(urlReq);
+    splitCity.forEach(elem => { urlReq += elem + space; })
     window.open(urlReq, '_blank');
+}
+
+export const openWebsite = (url) => {
+    window.open("" + url, '_blank');
 }

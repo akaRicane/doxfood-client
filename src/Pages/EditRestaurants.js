@@ -1,25 +1,25 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
-import { editSpotInfos, fetchSpotInfos } from '../API/toServer';
+import { editSpotInfos } from '../API/toServer';
 import { buildAlertMsg } from '../Utils/utils';
 
-import Edit from '../Components/Editor';
+import Editor from '../Components/Editor';
 
 const EditRestaurants = () => {
 
-    const spotId = useLocation().state.id;
-    const spotName = useLocation().state.name;
+    let location = useLocation();
     const [spot, setSpot] = React.useState({})
 
     React.useEffect(() => {
-        fetchSpotInfos(spotId, setSpot);
+        setSpot(location.state.infos)
         // eslint-disable-next-line
-    }, [spotId])
+    }, [])
 
     const handleSubmitEdittedSpot = (newEntry) => {
         if (window.confirm(buildAlertMsg(newEntry, 'edit'))) {
-            editSpotInfos(spotId, newEntry);
+            editSpotInfos(spot.id, newEntry);
         }
         else {
             console.log("Abort save")
@@ -28,8 +28,11 @@ const EditRestaurants = () => {
 
     return (
         <div className='edit'>
-            <h1 className='text'>Edit {spotName} infos</h1>
-            <Edit spot={spot} handleSubmitEdittedSpot={handleSubmitEdittedSpot} />
+            <div>
+                <h1 className='text'>Edit {spot.name} infos</h1>
+                <NavLink to='/doxfood-client/list'><span>Back to list</span></NavLink>
+            </div>
+            <Editor spot={spot} handleSubmitEdittedSpot={handleSubmitEdittedSpot} />
         </div>
     );
 };

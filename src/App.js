@@ -22,7 +22,7 @@ const App = () => {
                 <Routes>
                     <Route path='/doxfood-client/' element={<FindRestaurants />} />
                     <Route path='/doxfood-client/new' element={<NewRestaurant />} />
-                    <Route path='/doxfood-client/edit/:spotId' element={<EditRestaurants />} />
+                    <Route path='/doxfood-client/edit/' element={<EditRestaurants />} />
                     <Route path='/doxfood-client/list' element={<ListRestaurants />} />
                     <Route path='*' element={<NotFound />} />
                 </Routes>
