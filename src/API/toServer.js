@@ -13,7 +13,7 @@ export const addNewSpot = (newEntry) => {
                 alert("UNAUTHORIZED to create new restaurant")
             }
             else {
-                console.log("Added to database: " + res.data);
+                alert("Added to database: " + res.data);
             }
         })
         .catch(err => {
@@ -70,7 +70,7 @@ export const editSpotInfos = (spotId, newEntry) => {
                 alert("UNAUTHORIZED to edit restaurant")
             }
             else {
-                console.log("Editted restaurant: " + res.data);
+                alert("Editted restaurant: " + res.data);
             }
         })
         .catch(err => {
