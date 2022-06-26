@@ -5,7 +5,9 @@ const Header = () => {
     return (
         <div className='header'>
             <div>
-                <h3>DOXFOOD</h3>
+            <NavLink to='/doxfood-client/'>
+                    <h3>DOXFOOD</h3>
+                </NavLink>
             </div>
             <div className='text'>
                 <NavLink to='/doxfood-client/'>

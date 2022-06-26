@@ -51,9 +51,6 @@ const Finder = () => {
                             <td>
                                 <h3>Where to eat ?</h3>
                             </td>
-                            <td>
-                                <button onClick={() => { handleFindBtn() }}>Find</button>
-                            </td>
                         </tr>
                         <tr>
                             <td>Food</td>
@@ -99,9 +96,13 @@ const Finder = () => {
                                 />
                             </td>
                         </tr>
+                        <tr><td><h1> </h1></td></tr>
                         <tr>
-                            <td><h3 className='text'>Results</h3></td>
+                            <td>
+                                <button onClick={() => { handleFindBtn() }}>See results</button>
+                            </td>
                         </tr>
+                        <tr><td><h1> </h1></td></tr>
                         {
                             foundSpots.map((spot, idx) => {
                                 return (
