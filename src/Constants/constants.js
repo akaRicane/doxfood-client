@@ -1,13 +1,19 @@
 export const OPTIONS_FOOD = [
     { "label": "", "value": "false" },
-    { "label": "Microwave", "value": "Microwave" },
-    { "label": "Italian", "value": "Italian" },
+    { "label": "African", "value": "African" },
     { "label": "Brasserie", "value": "Brasserie" },
     { "label": "Burgers", "value": "Burgers" },
-    { "label": "Japonese", "value": "Japonese" },
     { "label": "Chinese", "value": "Chinese" },
-    { "label": "Thaï", "value": "Thaï" },
+    { "label": "Fast Food", "value": "Fast Food" },
+    { "label": "Japonese", "value": "Japonese" },
+    { "label": "Italian", "value": "Italian" },
+    { "label": "Mediterranean", "value": "Mediterranean" },
+    { "label": "Microwave", "value": "Microwave" },
+    { "label": "Poke", "value": "Poke" },
     { "label": "Saladbar", "value": "Saladbar" },
+    { "label": "Sandwich", "value": "Sandwich" },
+    { "label": "Thaï", "value": "Thaï" },
+    { "label": "Bar", "value": "Bar" },
 ];
 
 export const OPTIONS_VEGETARIAN = [
@@ -40,6 +46,5 @@ export const OPTIONS_PRICE = [
 export const OPTIONS_DISTANCE = [
     { "label": " ", "value": "false" },
     { "label": "< 10 min", "value": "10" },
-    { "label": "< 20 min", "value": "20" },
-    { "label": "< 40 min", "value": "40" }
+    { "label": "< 20 min", "value": "20" }
 ];
