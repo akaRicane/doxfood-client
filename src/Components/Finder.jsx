@@ -12,11 +12,21 @@ import { DEFAULT_FOOD_CHOICE, DEFAULT_PRICE_CHOICE, DEFAULT_DISTANCE_CHOICE, DEF
 const Finder = () => {
 
     const [foundSpots, setFoundSpots] = React.useState([]);
+    const [randomSpot, setRandomSpot] = React.useState([]);
     const [foodChoice, setFoodChoice] = React.useState(DEFAULT_FOOD_CHOICE);
     const [priceChoice, setPriceChoice] = React.useState(DEFAULT_PRICE_CHOICE);
     const [distanceChoice, setDistanceChoice] = React.useState(DEFAULT_DISTANCE_CHOICE);
     const [vegetarianChoice, setVegetarianChoice] = React.useState(DEFAULT_VEGETARIAN_CHOICE_FINDER);
     const [pinList, setPinList] = React.useState(DEFAULT_PINMAP);
+
+    const handleRandomPick = () => {
+        const pickedId = Math.floor(Math.random() * (foundSpots.length));
+        setRandomSpot(foundSpots[pickedId])
+    }
+
+    const updateFoundSpotsCallback = React.useCallback(() => {
+        findSpots(foodChoice, priceChoice, distanceChoice, vegetarianChoice, setFoundSpots);
+    }, [foodChoice, priceChoice, distanceChoice, vegetarianChoice, setFoundSpots]);
 
     React.useEffect(() => {
         if (foundSpots.length > 0) {
@@ -33,14 +43,15 @@ const Finder = () => {
         }
         else {
             setPinList(DEFAULT_PINMAP);
+            updateFoundSpotsCallback();
         }
-    }, [foundSpots])
+    }, [foundSpots, updateFoundSpotsCallback])
 
     const handleFoodDP = (event) => { setFoodChoice(event.target.value); };
     const handlePriceDP = (event) => { setPriceChoice(event.target.value); };
     const handleDistanceDP = (event) => { setDistanceChoice(event.target.value); };
     const handleVegetarianDP = (event) => { setVegetarianChoice(event.target.value); };
-    const handleFindBtn = () => { findSpots(foodChoice, priceChoice, distanceChoice, vegetarianChoice, setFoundSpots); };
+    const handleFindBtn = () => { updateFoundSpotsCallback()};
 
     return (
         <div className='module'>
@@ -99,7 +110,15 @@ const Finder = () => {
                         <tr><td><h1> </h1></td></tr>
                         <tr>
                             <td>
-                                <button onClick={() => { handleFindBtn() }}>See results</button>
+                                <button onClick={() => { handleRandomPick() }}>Pick for me !</button>
+                            </td>
+                            <td>
+                                {randomSpot.name}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button onClick={() => { handleFindBtn() }}>See results !</button>
                             </td>
                         </tr>
                         <tr><td><h1> </h1></td></tr>
