@@ -15,8 +15,8 @@ const FindRestaurants = () => {
 
     return (
         <div className='home'>
-            <h1 className='text'>Home</h1>
-            <Finder />
+        <h2 className='text'>Home</h2>
+        <Finder/>
         </div>
     );
 };

@@ -51,11 +51,12 @@ const Finder = () => {
     const handlePriceDP = (event) => { setPriceChoice(event.target.value); };
     const handleDistanceDP = (event) => { setDistanceChoice(event.target.value); };
     const handleVegetarianDP = (event) => { setVegetarianChoice(event.target.value); };
+    // TODO all above actions should also call findSpots()    
     const handleFindBtn = () => { updateFoundSpotsCallback()};
 
     return (
-        <div className='module'>
-            <div className='col'>
+        <div className="module content-grid mdl-grid">
+            <div className="col finder mdl-cell">
                 <table>
                     <tbody>
                         <tr>
@@ -126,7 +127,7 @@ const Finder = () => {
                             foundSpots.map((spot, idx) => {
                                 return (
                                     <tr key={"tr-" + idx}><td key={"td-" + idx}>
-                                        <Link to={'/doxfood-client/edit/'} state={{ infos: spot }}>{spot.name}  ({spot.food})</Link>
+                                        &#127860;<Link to={'/doxfood-client/edit/'} state={{ infos: spot }}>{spot.name}  ({spot.food})</Link>
                                     </td></tr>
                                 )
                             })

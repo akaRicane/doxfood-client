@@ -16,16 +16,27 @@ const ListRestaurants = () => {
 
     return (
         <div className='list'>
-            <h1 className='text'>Restaurants list</h1>
-            <div>
-                {
-                    context.restaurantsList.map((spot, idx) => {
-                        return (
-                            <Tile key={"tile-" + idx} spot={spot} />
-                        )
-                    })
-                }
-            </div>
+            <h1>Restaurants list</h1>
+            <table class="mdl-data-table mdl-js-data-table mdl-data-table mdl-shadow--2dp">
+                <thead>
+                    <tr>
+                        <th class="mdl-data-table__cell--non-numeric">Name</th>
+                        <th class="mdl-data-table__cell--non-numeric">Food</th>
+                        <th class="mdl-data-table__cell--non-numeric">Vege ?</th>
+                        <th>Rating</th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        context.restaurantsList.map((spot, idx) => {
+                            return (
+                                <Tile key={"tile-" + idx} spot={spot} />
+                            )
+                        })
+                    }
+                </tbody>
+            </table>
         </div>
     );
 };
