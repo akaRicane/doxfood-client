@@ -5,3 +5,14 @@
 .mdl-layout-title {
     font-size: 2rem;
 }
+
+.home {
+    // display: inline;
+    min-height: 80vh;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+footer {
+    margin-top: auto;
+}

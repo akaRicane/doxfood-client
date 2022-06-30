@@ -12,17 +12,13 @@ const Tile = ({ spot }) => {
     }, [spot]);
 
     return (
-        <div className='tile'>
-            <div className='tile-text'>
-                <h3>{spotInfos.name} ({spotInfos.food}  /  {spotInfos.vegetarian})</h3>
-            </div>
-            <div className='tile-text'>
-                <h3>{spotInfos.rate}</h3>
-            </div>
-            <div className='tile-text'>
-                <Link to={'/doxfood-client/edit/'} state={{infos: spotInfos}}>edit</Link>
-            </div>
-        </div>
+        <tr>
+            <td class="mdl-data-table__cell--non-numeric">{spotInfos.name}</td>
+            <td class="mdl-data-table__cell--non-numeric">{spotInfos.food}</td>
+            <td class="mdl-data-table__cell--non-numeric">{spotInfos.vegetarian}</td>
+            <td class="mdl-data-table__cell--non-numeric">{spotInfos.rate}</td>
+            <td class="mdl-data-table__cell--non-numeric"><Link to={'/doxfood-client/edit/'} state={{ infos: spotInfos }}>&#x270E;</Link></td>
+        </tr>
     );
 };
 
