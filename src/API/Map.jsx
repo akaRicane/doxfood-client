@@ -24,7 +24,7 @@ const Map = ({ pinList }) => {
     }, [pinList]);
 
     return (
-        <div id='leaflet'>
+        <div id='leaflet' class="mdl-cell">
             <MapContainer center={DXOMARK_COORDINATES} zoom={15} scrollWheelZoom={false}>
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

@@ -130,7 +130,7 @@ const Editor = ({ spot, handleSubmitEdittedSpot }) => {
 
     return (
         <div className='module'>
-            <div className='col'>
+            <div className='col' class="mdl-cell">
                 <table>
                     <tbody>
                         <tr key={"name"}>

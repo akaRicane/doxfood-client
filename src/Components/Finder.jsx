@@ -54,8 +54,8 @@ const Finder = () => {
     const handleFindBtn = () => { updateFoundSpotsCallback()};
 
     return (
-        <div className='module'>
-            <div className='col'>
+        <div className='module' class="content-grid mdl-grid">
+            <div className='col' class="mdl-cell">
                 <table>
                     <tbody>
                         <tr>

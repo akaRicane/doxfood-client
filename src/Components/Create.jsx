@@ -66,7 +66,7 @@ const Create = ({ handleSubmitNewSpot }) => {
 
     return (
         <div className='module'>
-            <div className='col'>
+            <div className='col' class="mdl-cell">
                 <table>
                     <tbody>
                         <tr>

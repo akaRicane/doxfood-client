@@ -3,24 +3,28 @@ import { NavLink } from 'react-router-dom';
 
 const Header = () => {
     return (
-        <div className='header'>
-            <div>
-            <NavLink to='/doxfood-client/'>
-                    <h3>DOXFOOD</h3>
-                </NavLink>
+        <header class="mdl-layout__header">
+            <div className='header'>
+                <div class="mdl-layout__header-row">
+                    {/* <!-- Title --> */}
+                    <span class="mdl-layout-title">DOX<sup>Food</sup></span>
+                    {/* <!-- Add spacer, to align navigation to the right --> */}
+                    <div class="mdl-layout-spacer"></div>
+                    {/* <!-- Navigation. We hide it in small screens. --> */}
+                    <nav class="mdl-navigation mdl-layout--large-screen-only">
+                        <a class="mdl-navigation__link" href=""><NavLink to='/doxfood-client/'>
+                    <span>&#127968;</span>
+                </NavLink></a>
+                        <a class="mdl-navigation__link" href=""><NavLink to='/doxfood-client/list'>
+                    <span>	&#128218;</span>
+                </NavLink></a>
+                        <a class="mdl-navigation__link" href=""><NavLink to='/doxfood-client/new'>
+                    <span>&#127381;</span>
+                </NavLink></a>
+                    </nav>
+                </div>
             </div>
-            <div className='text'>
-                <NavLink to='/doxfood-client/'>
-                    <span>🏠 </span>
-                </NavLink>
-                <NavLink to='/doxfood-client/list'>
-                    <span>📚</span>
-                </NavLink>
-                <NavLink to='/doxfood-client/new'>
-                    <span>🆕</span>
-                </NavLink>
-            </div>
-        </div>
+        </header>
     );
 };
 
